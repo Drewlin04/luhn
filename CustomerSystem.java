@@ -68,7 +68,7 @@ class CustomerSystem{
         for(int i = 0; i< len; i++){
             if (postal.charAt(i) <= '4'){
                 
-            
+            }
         }
        
     }
