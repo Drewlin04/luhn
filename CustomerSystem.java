@@ -67,10 +67,10 @@ class CustomerSystem{
         int len = postal.length();
         for(int i = 0; i< len; i++){
             if (postal.charAt(i) <= '4'){
-                return i;
+                
             }
         }
-        return 0;
+       
     }
     /*
     * This method may be edited to achieve the task however you like.
