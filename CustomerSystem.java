@@ -63,10 +63,10 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void validatePostalCode(String postal){
-        int len = postal.length();
+    public static void validatePostalCode(String postalInput){
+        int len = postalInput.length();
         for(int i = 0; i< len; i++){
-            if (postal.charAt(i) <= '4'){
+            if (postalInput.charAt(i) <= '4'){
                 
             }
         }
@@ -86,6 +86,7 @@ class CustomerSystem{
     */
     public static void generateCustomerDataFile(){
     }
+    
     /*******************************************************************
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
