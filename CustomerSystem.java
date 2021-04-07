@@ -6,6 +6,14 @@
 import java.util.Scanner;
 // More packages may be imported in the space below
 
+import java.io.BufferedReader;
+
+import java.io.FileReader;
+
+
+
+
+
 
 class CustomerSystem{
     public static void main(String[] args){
@@ -26,7 +34,7 @@ class CustomerSystem{
             if (userInput.equals(enterCustomerOption)){
                 // Only the line below may be editted based on the parameter list and how you design the method return
 		        // Any necessary variables may be added to this if section, but nowhere else in the code
-                enterCustomerInfo();
+                enterCustomerInfo(reader);
             }
             else if (userInput.equals(generateCustomerOption)) {
                 // Only the line below may be editted based on the parameter list and how you design the method return
@@ -56,22 +64,45 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void enterCustomerInfo() {
+    public static void enterCustomerInfo(Scanner reader){
     }
+
+   
+
+
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void validatePostalCode(String postal){
-        int len = postal.length();
-        for(int i = 0; i< len; i++){
-            if (postal.charAt(i) <= '4'){
-                return i;
-            }
-        }
-        return 0;
+    public static void validatePostalCode(String postalInput) throws Exception {
+        
+        FileReader fr=new FileReader("postal-codes.txt");
+        BufferedReader br=new BufferedReader(fr);
+        String csv;
+      
+    while ((csv=br.readLine())!=null){
+       if(csv.contains(postalInput)){
+        System.out.println("Postal code is valid.");
+       }
+       else{
+           System.out.println("Postal code is not found in the database, please try again.");
+       }
+
+
+      br.close();
+    }                                                                             
     }
+ 
+    
+
+
+   
+     
+    
+        
+    
+
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
@@ -86,7 +117,25 @@ class CustomerSystem{
     */
     public static void generateCustomerDataFile(){
     }
+    
+
+    
     /*******************************************************************
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
+
+public static int validatePostalCode2(String postalInput){
+    int len = postalInput.length();
+    for(int i = 0; i<len; i++){
+        // If sattement to check for at least 3 characters
+        if (postalInput.charAt(i) <= '2'){
+            return i;
+        }
+    }
+    // Base case for if there less than three characters
+    return 0;
 }
+
+}
+
+
