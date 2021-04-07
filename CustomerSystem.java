@@ -5,8 +5,11 @@
 
 import java.util.Scanner;
 // More packages may be imported in the space below
-import java.io.File;
-import java.io.FileNotFoundException;
+
+import java.io.BufferedReader;
+
+import java.io.FileReader;
+
 
 
 
@@ -72,23 +75,25 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void validatePostalCode(String postalInput) throws FileNotFoundException {
-        int len = postalInput.length();
-        String fileName = "postal-codes.txt";
-        File textFile= new File (fileName);
-        Scanner reader = new Scanner(textFile);
-        String line = reader.nextLine();
+    public static void validatePostalCode(String postalInput) throws Exception {
+        
+        FileReader fr=new FileReader("postal-codes.txt");
+        BufferedReader br=new BufferedReader(fr);
+        String csv;
+      
+    while ((csv=br.readLine())!=null){
+       if(csv.contains(postalInput)){
+        System.out.println("Postal code is valid.");
+       }
+       else{
+           System.out.println("Postal code is not found in the database, please try again.");
+       }
 
-        for(int i = 0; i< len; i++){
-            if (postalInput.charAt(len) <= '2' && line.substring(0, 3) == postalInput); {
-                System.out.println("Postal code is Valid");
-            }
-            
-        }
-    reader.close();
+
+      br.close();
+    }                                                                             
     }
-
-
+ 
     
 
 
