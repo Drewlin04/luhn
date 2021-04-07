@@ -26,7 +26,7 @@ class CustomerSystem{
             if (userInput.equals(enterCustomerOption)){
                 // Only the line below may be editted based on the parameter list and how you design the method return
 		        // Any necessary variables may be added to this if section, but nowhere else in the code
-                enterCustomerInfo();
+                enterCustomerInfo(reader);
             }
             else if (userInput.equals(generateCustomerOption)) {
                 // Only the line below may be editted based on the parameter list and how you design the method return
@@ -56,7 +56,22 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void enterCustomerInfo() {
+    public static void enterCustomerInfo(Scanner reader){
+	String firstName;
+        System.out.println("Enter your first name:");
+        firstName = reader.nextLine();
+        String lastName;
+        System.out.println("Enter your last name:");
+        lastName = reader.nextLine();
+        String city;
+        System.out.println("Enter the city you live in:");
+        city = reader.nextLine();
+        String postalCode;
+        System.out.println("Enter your postal code:");
+        postalCode = reader.nextLine();
+        String creditCard;
+        System.out.println("Enter your credit card number:");
+        creditCard = reader.nextLine();
     }
     /*
     * This method may be edited to achieve the task however you like.
