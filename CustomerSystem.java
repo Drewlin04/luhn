@@ -5,6 +5,11 @@
 
 import java.util.Scanner;
 // More packages may be imported in the space below
+import java.io.File;
+import java.io.FileNotFoundException;
+
+
+
 
 
 class CustomerSystem{
@@ -56,22 +61,43 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void enterCustomerInfo(Scanner reader) {
+    public static void enterCustomerInfo(Scanner reader){
     }
+
+   
+
+
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void validatePostalCode(String postalInput){
+    public static void validatePostalCode(String postalInput) throws FileNotFoundException {
         int len = postalInput.length();
+        String fileName = "postal-codes.txt";
+        File textFile= new File (fileName);
+        Scanner reader = new Scanner(textFile);
+        String line = reader.nextLine();
+
         for(int i = 0; i< len; i++){
-            if (postalInput.charAt(i) <= '4'){
-                
+            if (postalInput.charAt(len) <= '2' && line.substring(0, 3) == postalInput); {
+                System.out.println("Postal code is Valid");
             }
+            
         }
-       
+    reader.close();
     }
+
+
+    
+
+
+   
+     
+    
+        
+    
+
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
@@ -87,7 +113,12 @@ class CustomerSystem{
     public static void generateCustomerDataFile(){
     }
     
+
+    
     /*******************************************************************
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
 }
+
+
+
