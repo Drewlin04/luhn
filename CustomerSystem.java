@@ -123,7 +123,19 @@ class CustomerSystem{
     /*******************************************************************
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
+
+public static int validatePostalCode2(String postalInput){
+    int len = postalInput.length();
+    for(int i = 0; i<len; i++){
+        // If sattement to check for at least 3 characters
+        if (postalInput.charAt(i) <= '2'){
+            return i;
+        }
+    }
+    // Base case for if there less than three characters
+    return 0;
 }
 
+}
 
 
