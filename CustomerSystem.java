@@ -65,7 +65,7 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void enterCustomerInfo(Scanner reader){
-    
+        
     }
 
 
@@ -78,19 +78,23 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void validatePostalCode(String postalInput) throws Exception {
-  
+        // Initialise necessary packages
         FileReader fr= new FileReader("postal-codes.txt");
         BufferedReader br= new BufferedReader(fr);
+        // Add needed varaible of the postal code file
         String csv;
-      
+    // Allows system to check the desired file
     while ((csv=br.readLine())!=null){
-       if(csv.contains(postalInput)){
+       // Statement to check if the postal code given by the user is in the file
+        if(csv.contains(postalInput)){
         System.out.println("Postal code is valid.");
        }
+       // Situation when it is not found in file
        else{
            System.out.println("Postal code is not found in the database, please try again.");
        }
-      br.close();
+      // Close bufferedreader
+       br.close();
     }                                                                             
     }
     /*
@@ -107,21 +111,24 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void generateCustomerDataFile(String firstName, String lastName, String city, String postalInput, String creditCard){
-
+        // Necessary varaibles to generate id 
         int num1 = 99999999;
         int num2 = 10000000;
+        // Initalise package
         Random rand = new Random();
+        // Allows the system to generate a randumber number (8 digit id number)
         int id = rand.nextInt(num1 - num2) + num2;
-   
+   // Varaiable of the customer data file
     String filepath = "customer.txt";
         try{
+            // Initalise packages
             FileWriter fw = new FileWriter(filepath);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-
+            // Prints desired information into file
             pw.println(id+","+firstName+","+lastName+","+city+","+postalInput+","+creditCard);
+            // Close print writer
             pw.close();
-
             System.out.println("File has been saved:"+filepath);
         }
         catch (Exception e){
@@ -141,7 +148,7 @@ class CustomerSystem{
     public static int validatePostalCode2(String postalInput){
         int len = postalInput.length();
         for(int i = 0; i<len; i++){
-        // If sattement to check for at least 3 characters
+        // If stateement to check for at least 3 characters
         if (postalInput.charAt(i) <= '2'){
             return i;
                 }
