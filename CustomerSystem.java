@@ -93,16 +93,16 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void validatePostalCode(String postalInput) throws Exception {
+    public static void validatePostalCode(String postalCode) throws Exception {
         // Initialise necessary packages
-        FileReader fr= new FileReader("postal-codes.txt");
+        FileReader fr= new FileReader("postal_codes(1).csv");
         BufferedReader br= new BufferedReader(fr);
         // Add needed varaible of the postal code file
         String csv;
     // Allows system to check the desired file
     while ((csv=br.readLine())!=null){
        // Statement to check if the postal code given by the user is in the file
-        if(csv.contains(postalInput)){
+        if(csv.contains(postalCode)){
         System.out.println("Postal code is valid.");
        }
        // Situation when it is not found in file
@@ -152,7 +152,7 @@ class CustomerSystem{
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void generateCustomerDataFile(String firstName, String lastName, String city, String postalInput, String creditCard){
+    public static void generateCustomerDataFile(String firstName, String lastName, String city, String postalCode, String creditCard){
         // Necessary varaibles to generate id 
         int num1 = 99999999;
         int num2 = 10000000;
@@ -168,7 +168,7 @@ class CustomerSystem{
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             // Prints desired information into file
-            pw.println(id+","+firstName+","+lastName+","+city+","+postalInput+","+creditCard);
+            pw.println(id+","+firstName+","+lastName+","+city+","+postalCode+","+creditCard);
             // Close print writer
             pw.close();
             System.out.println("File has been saved:"+filepath);
@@ -185,11 +185,11 @@ class CustomerSystem{
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
 
-    public static int validatePostalCode2(String postalInput){
-        int len = postalInput.length();
+    public static int validatePostalCode2(String postalCode){
+        int len = postalCode.length();
         for(int i = 0; i<len; i++){
         // If stateement to check for at least 3 characters
-        if (postalInput.charAt(i) <= '2'){
+        if (postalCode.charAt(i) <= '2'){
             return i;
                 }
         }
