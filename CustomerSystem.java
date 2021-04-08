@@ -12,8 +12,6 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 
-
-
 class CustomerSystem{
     public static void main(String[] args){
         // Please do not edit any of these variables
@@ -59,14 +57,13 @@ class CustomerSystem{
         .concat("Enter menu option (1-9)\n")
         );
     }
-    /*
+    
+   /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
     public static void enterCustomerInfo(Scanner reader){
-      
-=======
     // ask the user for their information
 	String firstName;
         System.out.println("Enter your first name:");
@@ -89,11 +86,7 @@ class CustomerSystem{
             creditCard = reader.nextLine();
         }
 
-    }
-
-
-   
-        
+    }    
 
     /*
     * This method may be edited to achieve the task however you like.
@@ -120,10 +113,7 @@ class CustomerSystem{
        br.close();
     }                                                                             
     }
-
-
-
-
+	
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
@@ -191,8 +181,6 @@ class CustomerSystem{
         }
 }
 
-
-    
     /*******************************************************************
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
