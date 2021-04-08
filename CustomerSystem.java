@@ -108,14 +108,14 @@ class CustomerSystem{
     */
     public static void generateCustomerDataFile(String firstName, String lastName, String city, String postalInput, String creditCard){
 
-        int num1 = 10000000;
-        int num2 = 0;
+        int num1 = 99999999;
+        int num2 = 10000000;
         Random rand = new Random();
         int id = rand.nextInt(num1 - num2) + num2;
    
     String filepath = "customer.txt";
         try{
-            FileWriter fw = new FileWriter(filepath, true);
+            FileWriter fw = new FileWriter(filepath);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
