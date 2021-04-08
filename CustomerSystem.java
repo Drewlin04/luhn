@@ -120,7 +120,6 @@ class CustomerSystem{
             PrintWriter pw = new PrintWriter(bw);
 
             pw.println(id+","+firstName+","+lastName+","+city+","+postalInput+","+creditCard);
-            pw.flush();
             pw.close();
 
             System.out.println("File has been saved:"+filepath);
