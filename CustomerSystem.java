@@ -170,6 +170,7 @@ class CustomerSystem{
             // Prints desired information into file
             pw.println(id+","+firstName+","+lastName+","+city+","+postalCode+","+creditCard);
             // Close print writer
+	    pw.flush();	
             pw.close();
             System.out.println("File has been saved:"+filepath);
         }
