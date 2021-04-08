@@ -5,9 +5,6 @@
 
 import java.util.Scanner;
 // More packages may be imported in the space below
-
-import javax.swing.JOptionPane;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Random;
@@ -68,7 +65,7 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void enterCustomerInfo(Scanner reader){
-        
+    
     }
 
 
@@ -81,7 +78,7 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void validatePostalCode(String postalInput) throws Exception {
-        
+  
         FileReader fr= new FileReader("postal-codes.txt");
         BufferedReader br= new BufferedReader(fr);
         String csv;
@@ -93,13 +90,9 @@ class CustomerSystem{
        else{
            System.out.println("Postal code is not found in the database, please try again.");
        }
-
-
       br.close();
-        }                                                                             
+    }                                                                             
     }
- 
-
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
@@ -115,10 +108,10 @@ class CustomerSystem{
     */
     public static void generateCustomerDataFile(String firstName, String lastName, String city, String postalInput, String creditCard){
 
-    int num1 = 10000000;
-    int num2 = 0;
-    Random rand = new Random();
-    int id = rand.nextInt(num1 - num2) + num2;
+        int num1 = 10000000;
+        int num2 = 0;
+        Random rand = new Random();
+        int id = rand.nextInt(num1 - num2) + num2;
    
     String filepath = "customer.txt";
         try{
@@ -130,14 +123,14 @@ class CustomerSystem{
             pw.flush();
             pw.close();
 
-            JOptionPane.showMessageDialog(null, "Record saved");
+            System.out.println("File has been saved:"+filepath);
         }
-        catch (Exception E)
-        {
-            JOptionPane.showMessageDialog(null, "Record saved");
-    
-    }
-    
+        catch (Exception e){
+            System.out.println(e);
+        }
+        finally{
+            System.out.println("Code within finally block");
+        }
 }
 
 
