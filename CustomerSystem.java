@@ -65,6 +65,25 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void enterCustomerInfo(Scanner reader){
+	String firstName;
+        System.out.println("Enter your first name:");
+        firstName = reader.nextLine();
+        String lastName;
+        System.out.println("Enter your last name:");
+        lastName = reader.nextLine();
+        String city;
+        System.out.println("Enter the city you live in:");
+        city = reader.nextLine();
+        String postalCode;
+        System.out.println("Enter your postal code:");
+        postalCode = reader.nextLine();
+        String creditCard;
+        System.out.println("Enter your credit card number:");
+        creditCard = reader.nextLine();
+        while (!validateCreditCard(creditCard)){
+            System.out.println("Your card is invalid. Please enter a valid credit card");
+            creditCard = reader.nextLine();
+        }
     }
 
    
@@ -93,15 +112,6 @@ class CustomerSystem{
       br.close();
     }                                                                             
     }
- 
-    
-
-
-   
-     
-    
-        
-    
 
     /*
     * This method may be edited to achieve the task however you like.
@@ -109,6 +119,27 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void validateCreditCard(){
+	if (creditCard.length() < 9){
+        return false;
+            }
+        String creditCardReversed = "";
+        for (int i = creditCard.length()-1; i>=0; i--){
+            creditCardReversed += creditCard.charAt(i);
+        }
+        int sum1 = 0; 
+        for(int i = 0; i< creditCardReversed.length(); i +=2){
+            sum1 += Character.getNumericValue(creditCardReversed.charAt(i));
+        }
+        int sum2 = 0;
+        for(int i = 1; i< creditCardReversed.length(); i +=2){
+            int digit = Character.getNumericValue(creditCardReversed.charAt(i) *2);
+            if(digit > 9){
+                sum2 += digit - 9;
+            } else{
+                sum2 += digit;
+            }
+        }
+        return (sum1 + sum2) % 10 == 0; 
     }
     /*
     * This method may be edited to achieve the task however you like.
