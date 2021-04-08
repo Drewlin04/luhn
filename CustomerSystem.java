@@ -6,12 +6,14 @@
 import java.util.Scanner;
 // More packages may be imported in the space below
 
+import javax.swing.JOptionPane;
+
 import java.io.BufferedReader;
-
 import java.io.FileReader;
-
-
-
+import java.util.Random;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.PrintWriter;
 
 
 
@@ -38,7 +40,7 @@ class CustomerSystem{
             }
             else if (userInput.equals(generateCustomerOption)) {
                 // Only the line below may be editted based on the parameter list and how you design the method return
-                generateCustomerDataFile();
+                generateCustomerDataFile(exitCondition, exitCondition, exitCondition, exitCondition, exitCondition);
             }
             else{
                 System.out.println("Please type in a valid option (A number from 1-9)");
@@ -48,6 +50,7 @@ class CustomerSystem{
         
         reader.close();
         System.out.println("Program Terminated");
+    
     }
     public static void printMenu(){
         System.out.println("Customer and Sales System\n"
@@ -65,10 +68,12 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void enterCustomerInfo(Scanner reader){
+        
     }
 
-   
 
+   
+        
 
     /*
     * This method may be edited to achieve the task however you like.
@@ -77,8 +82,8 @@ class CustomerSystem{
     */
     public static void validatePostalCode(String postalInput) throws Exception {
         
-        FileReader fr=new FileReader("postal-codes.txt");
-        BufferedReader br=new BufferedReader(fr);
+        FileReader fr= new FileReader("postal-codes.txt");
+        BufferedReader br= new BufferedReader(fr);
         String csv;
       
     while ((csv=br.readLine())!=null){
@@ -91,17 +96,9 @@ class CustomerSystem{
 
 
       br.close();
-    }                                                                             
+        }                                                                             
     }
  
-    
-
-
-   
-     
-    
-        
-    
 
     /*
     * This method may be edited to achieve the task however you like.
@@ -110,32 +107,55 @@ class CustomerSystem{
     */
     public static void validateCreditCard(){
     }
+    
     /*
     * This method may be edited to achieve the task however you like.
     * The method may not nesessarily be a void return type
     * This method may also be broken down further depending on your algorithm
     */
-    public static void generateCustomerDataFile(){
+    public static void generateCustomerDataFile(String firstName, String lastName, String city, String postalInput, String creditCard){
+
+    int num1 = 10000000;
+    int num2 = 0;
+    Random rand = new Random();
+    int id = rand.nextInt(num1 - num2) + num2;
+   
+    String filepath = "customer.txt";
+        try{
+            FileWriter fw = new FileWriter(filepath, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            pw.println(id+","+firstName+","+lastName+","+city+","+postalInput+","+creditCard);
+            pw.flush();
+            pw.close();
+
+            JOptionPane.showMessageDialog(null, "Record saved");
+        }
+        catch (Exception E)
+        {
+            JOptionPane.showMessageDialog(null, "Record saved");
+    
     }
     
+}
+
 
     
     /*******************************************************************
     *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
     *******************************************************************/
 
-public static int validatePostalCode2(String postalInput){
-    int len = postalInput.length();
-    for(int i = 0; i<len; i++){
+    public static int validatePostalCode2(String postalInput){
+        int len = postalInput.length();
+        for(int i = 0; i<len; i++){
         // If sattement to check for at least 3 characters
         if (postalInput.charAt(i) <= '2'){
             return i;
+                }
         }
+        // Base case for if there less than three characters
+        return 0;
     }
-    // Base case for if there less than three characters
-    return 0;
 }
-
-}
-
 
